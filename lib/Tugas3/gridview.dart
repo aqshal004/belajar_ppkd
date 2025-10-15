@@ -9,9 +9,9 @@ class Tugas3 extends StatelessWidget {
       Color (0xffF5AD18),
       Color (0xffBF092F),
       Color (0xff3B9797),
-      Color (0xffFF9D00),
-      Color (0xffFFCF71),
-      Color (0xffF4E9D7),
+      Color (0xff000000),
+      Color (0xff476EAE),
+      Color (0xff84994F),
 
     ];
     return Scaffold(
@@ -34,7 +34,7 @@ class Tugas3 extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Masukan Nama Anda"
+                  hintText: "Masukan Email Anda"
                 ),
               ),
               SizedBox(height: 16,),
@@ -42,7 +42,7 @@ class Tugas3 extends StatelessWidget {
                TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Masukan Nama Anda"
+                  hintText: "Masukan No HP Anda"
                 ),
               ),
               SizedBox(height: 16,),
@@ -50,7 +50,7 @@ class Tugas3 extends StatelessWidget {
                TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Masukan Nama Anda"
+                  hintText: "Masukan Deskripsi Anda"
                 ),
               ),
               SizedBox(height: 16,),
