@@ -12,7 +12,7 @@ class Tugas4 extends StatelessWidget {
         ),
       body: ListView(
         padding:const EdgeInsets.all(8.0 ),
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: PageScrollPhysics(),
         children : [
           Text("Nama"),
           TextField(
@@ -54,6 +54,12 @@ class Tugas4 extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16,),
+          Divider(),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            alignment: Alignment.center,
+            child: Text("List Jersey", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ),
           // ListView.builder(
           //   itemCount: 6,
           //   shrinkWrap: true,
