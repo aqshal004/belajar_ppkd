@@ -12,6 +12,8 @@ class _Tugas5State extends State<Tugas5> {
   bool isShare = false;
   bool showMore = false;
   int  counter = 0;
+  bool showText = false;
+  int  angka = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,6 +132,7 @@ class _Tugas5State extends State<Tugas5> {
             ),
             SizedBox(height: 20,),
             Container(
+              margin: EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(20),
@@ -161,6 +164,66 @@ class _Tugas5State extends State<Tugas5> {
                   )
                 ],
               ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              margin: EdgeInsets.all(12),
+              width: double.infinity,
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(22),
+              ),
+              child: InkWell(
+                onTap: (){
+                  print("Tombol di tekan");
+                  showText = !showText;
+                  setState(() {         
+                  });
+                },
+                child: Center(
+                  child: Text(showText ? "" : "Tombol InkWell", style: TextStyle(color: Colors.black, fontSize: 20),),
+                ),
+              )
+            ),
+            SizedBox(height: 20,),
+            Container(
+              margin: EdgeInsets.all(12),
+              width: double.infinity,
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(22),
+              ),
+              child: GestureDetector(
+                onTap: (){
+                  print("Tombol di tekan");
+                  angka++;
+                  setState(() {         
+                  });
+                },
+                onDoubleTap: () {
+                  print("Tombol di tekan dua kali");
+                  angka+= 2;
+                  setState(() {         
+                  });
+                },
+                onLongPress: () {
+                  print("Tombol di tekan lama");
+                  angka+= 3;
+                  setState(() {         
+                  });
+                },
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Tombol GestureDetector" , style: TextStyle(color: Colors.black, fontSize: 20),),
+                      Text("$angka" , style: TextStyle(color: Colors.black, fontSize: 20),),
+                    ],
+                  ),
+                ),
+              )
             ),
         ],
         ),
