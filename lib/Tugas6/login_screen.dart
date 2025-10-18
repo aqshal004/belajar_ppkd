@@ -145,10 +145,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 20),
                             
                             // Email TextField
-                            CustomWidget(hintText: 'Loisbecket@gmail.com'),
+                            CustomWidget(hintText: 'Email'),
                             
                             const SizedBox(height: 16),
-                            CustomWidget(isPassword: true, hintText: '*******',),
+                            CustomWidget(isPassword: true, hintText: 'Password',),
                             // Password TextField
                             // TextField(
                             //   obscureText: _obscurePassword,
