@@ -11,7 +11,7 @@ class CustomWidget extends StatefulWidget {
 
 class _CustomWidgetState extends State<CustomWidget> {
   bool _obscurePassword = true;
-
+//ini function
   @override
   Widget build(BuildContext context) {
     return TextField(
