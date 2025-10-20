@@ -1,3 +1,5 @@
+import 'package:belajar_ppkd/Tugas2/layout.dart';
+import 'package:belajar_ppkd/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SlicingWidget extends StatefulWidget {
@@ -182,7 +184,7 @@ class _SlicingWidgetState extends State<SlicingWidget> {
                                   },
                                   child: SizedBox(
                                   child: Row(
-                                    
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Checkbox(value: _rememberMe
                                       , onChanged: (value) {
@@ -191,15 +193,14 @@ class _SlicingWidgetState extends State<SlicingWidget> {
                                         });
                                       }, 
                                       ),
-
                                       Text(
                                         'Remember Me', 
                                         style: TextStyle(
-                                          fontSize: 14,
+                                          fontSize: 12,
                                           color: Colors.black87,
                                           ),
                                         ),
-                                        SizedBox(width: 24),
+                                        SizedBox(width: 8),
                                         TextButton(
                                           onPressed: (){}, 
                                            child: Text(
@@ -214,12 +215,60 @@ class _SlicingWidgetState extends State<SlicingWidget> {
                                   ), 
                                   ), 
                                 ), 
-                                SizedBox(height: 20),
-                                
+                              SizedBox(height: 16),
+                               SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),
+                                    ),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xFF1D61E7),
+                                    padding: EdgeInsets.symmetric(vertical: 16),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadiusGeometry.circular(16),
+                                    ),
+                                    elevation: 0,
+                                  ),
+                                   child: Text(
+                                    'Log In', 
+                                  style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                                ),
+                                ),
+                               ), 
+                               SizedBox(height: 16),
+                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Don't have an accout", style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF6C7278),
+                                  ),
+                                  ),
+                                  TextButton(onPressed: (){
+
+                                  },
+                                  child: Text(
+                                    'Sign Up',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Color(0xFF4D81E7),
+                                    ),
+                                    ),
+                                  ),
+                               ],
+                               ),
                           ],
                         ),
                             ),
                             ),
+                            SizedBox(height: 40),
                           ],
                         ),
                             ),
