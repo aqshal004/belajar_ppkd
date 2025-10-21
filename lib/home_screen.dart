@@ -2,8 +2,12 @@ import 'package:belajar_ppkd/Tugas1/user_profile.dart';
 import 'package:belajar_ppkd/Tugas2/layout.dart';
 import 'package:belajar_ppkd/Tugas3/gridview.dart';
 import 'package:belajar_ppkd/Tugas4/listview.dart';
+import 'package:belajar_ppkd/Tugas5/button.dart';
+import 'package:belajar_ppkd/Tugas7/form_input.dart';
+import 'package:belajar_ppkd/slicing.dart';
 import 'package:flutter/material.dart';
-
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -15,10 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Tugas1(),
+    FormInput(),
     Tugas2(),
     Tugas3(),
     Tugas4(),
+    Tugas5(),
   ];
 
   void _onItemTapped(int index){
@@ -69,37 +74,100 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pop(context);
               },
             ),
+            Divider(),
+            ListTile(
+        leading: const Icon(Icons.logout),
+        title: const Text('Logout'),
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Logout'),
+              content: const Text('Apakah Anda yakin ingin logout?'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context), // batal
+                  child: const Text('Batal'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // TODO: Tambahkan logika logout di sini
+                    // Navigator.pop(context); // tutup dialog
+                    // Navigator.pop(context); // tutup drawer
+                    // Misal arahkan ke halaman login:
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => SlicingWidget()));
+                  },
+                  child: const Text('Logout'),
+                ),
+              ],
+            ),
+          );
+        },
+         ),
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        indicatorColor: Colors.amber,
-        selectedIndex: _selectedIndex,
-        destinations: const <NavigationDestination>[
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.notifications_sharp),
-            label: 'Notifications',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.messenger_sharp),
-            label: 'Messages',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.alarm),
-            label: 'Alarm',
-          ),
-        ],
+    bottomNavigationBar: CurvedNavigationBar(
+    backgroundColor: Colors.blueAccent,
+    index: _selectedIndex,
+    onTap: (index){
+      setState(() {
+        _selectedIndex = index;
+      });
+    },
+    items: [
+      CurvedNavigationBarItem(
+        child: Icon(Icons.home_outlined),
+        label: 'Home',
+
       ),
+      CurvedNavigationBarItem(
+        child: Icon(Icons.search),
+        label: 'Search',
+      ),
+      CurvedNavigationBarItem(
+        child: Icon(Icons.chat_bubble_outline),
+        label: 'Chat',
+      ),
+      CurvedNavigationBarItem(
+        child: Icon(Icons.newspaper),
+        label: 'Feed',
+      ),
+      CurvedNavigationBarItem(
+        child: Icon(Icons.perm_identity),
+        label: 'Personal',
+      ),
+    ],
+      ),
+
+      // bottomNavigationBar: NavigationBar(
+      //   onDestinationSelected: (int index) {
+      //     setState(() {
+      //       _selectedIndex = index;
+      //     });
+      //   },
+      //   indicatorColor: Colors.amber,
+      //   selectedIndex: _selectedIndex,
+      //   destinations: const <NavigationDestination>[
+      //     NavigationDestination(
+      //       selectedIcon: Icon(Icons.home),
+      //       icon: Icon(Icons.home_outlined),
+      //       label: 'Home',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Badge(label:Text('2'), child: Icon(Icons.notifications_sharp)),
+      //       label: 'Notifications',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Icon(Icons.messenger_sharp),
+      //       label: 'Messages',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Icon(Icons.alarm),
+      //       label: 'Alarm',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

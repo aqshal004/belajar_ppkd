@@ -1,7 +1,19 @@
+
+import 'package:belajar_ppkd/Tugas7/bottom_nav.dart';
+import 'package:belajar_ppkd/Tugas7/form_input.dart';
+import 'package:belajar_ppkd/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_ppkd/Tugas1/user_profile.dart';
+import 'package:belajar_ppkd/Tugas2/layout.dart';
+import 'package:belajar_ppkd/Tugas3/gridview.dart';
+import 'package:belajar_ppkd/Tugas4/listview.dart';
+import 'package:belajar_ppkd/Tugas5/button.dart';
+import 'package:belajar_ppkd/Tugas6/login_screen.dart';
+import 'slicing.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 
@@ -12,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -31,7 +44,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Tugas1(),
+      home: const BottomNav(),
     );
   }
 }
