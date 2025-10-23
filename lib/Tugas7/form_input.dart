@@ -1,8 +1,10 @@
+import 'package:belajar_ppkd/Tugas6/login_screen.dart';
 import 'package:belajar_ppkd/Tugas7/checkbox.dart';
 import 'package:belajar_ppkd/Tugas7/date_picker.dart';
 import 'package:belajar_ppkd/Tugas7/switch.dart';
 import 'package:belajar_ppkd/Tugas7/dropdown.dart';
 import 'package:belajar_ppkd/Tugas7/time_picker.dart';
+import 'package:belajar_ppkd/preferences/preferences_handler.dart';
 import 'package:flutter/material.dart';
 
 class FormInput extends StatefulWidget {
@@ -83,6 +85,36 @@ class _FormInputState extends State<FormInput> {
               },
               ),
               Divider(),
+              ListTile(
+        leading: const Icon(Icons.logout,color: Colors.red,),
+        title: const Text('Logout',style: TextStyle(color: Colors.red)),
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Logout',),
+              content: const Text('Apakah Anda yakin ingin logout?'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context), // batal
+                  child: const Text('Batal'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // TODO: Tambahkan logika logout di sini
+                    // Navigator.pop(context); // tutup dialog
+                    // Navigator.pop(context); // tutup drawer
+                    // Misal arahkan ke halaman login:
+                    PreferenceHandler.removeLogin();
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
+                  },
+                  child: const Text('Logout'),
+                ),
+              ],
+            ),
+          );
+        },
+         ),
           ],
         ),
       ),

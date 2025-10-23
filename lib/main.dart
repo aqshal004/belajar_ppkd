@@ -1,6 +1,9 @@
 
-import 'package:belajar_ppkd/Tugas7/bottom_nav.dart';
+import 'package:belajar_ppkd/Tugas10/text_field.dart';
+import 'package:belajar_ppkd/Tugas8/bottom_nav.dart';
 import 'package:belajar_ppkd/Tugas7/form_input.dart';
+import 'package:belajar_ppkd/Tugas9/drawer.dart';
+import 'package:belajar_ppkd/day18/splash_screen.dart';
 import 'package:belajar_ppkd/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_ppkd/Tugas1/user_profile.dart';
@@ -44,7 +47,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const BottomNav(),
+      home: const SplashScreenDay18(),
     );
   }
 }

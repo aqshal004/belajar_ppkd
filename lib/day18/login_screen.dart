@@ -1,8 +1,9 @@
 import 'package:belajar_ppkd/Tugas2/layout.dart';
+import 'package:belajar_ppkd/Tugas6/custom_widget.dart';
 import 'package:belajar_ppkd/Tugas8/bottom_nav.dart';
+import 'package:belajar_ppkd/preferences/preferences_handler.dart';
 import 'package:belajar_ppkd/slicing.dart';
 import 'package:flutter/material.dart';
-import 'custom_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -238,6 +239,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
+                                  PreferenceHandler.saveLogin(true);
                                   Navigator.push(
                                     context, 
                                     MaterialPageRoute(builder: (context) => BottomNav()),
