@@ -1,4 +1,5 @@
 
+import 'package:belajar_ppkd/Posyandu/login_pos.dart';
 import 'package:belajar_ppkd/Tugas10/text_field.dart';
 import 'package:belajar_ppkd/Tugas8/bottom_nav.dart';
 import 'package:belajar_ppkd/Tugas7/form_input.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SplashScreenDay18(),
+      home: const LoginPosyanduWidget(),
     );
   }
 }
