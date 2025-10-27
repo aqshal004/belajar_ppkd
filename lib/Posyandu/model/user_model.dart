@@ -7,12 +7,14 @@ class UserModel {
   String email;
   dynamic password;
   String domisili;
+  String nomorhp;
   UserModel({
   this.id, 
   required this.name, 
   required this.email, 
   required this.password,
   required this.domisili,
+  required this.nomorhp,
   });
 
   Map<String, dynamic> toMap() {
@@ -22,6 +24,7 @@ class UserModel {
       'email': email,
       'password': password,
       'domisili': domisili,
+      'nomorhp': nomorhp,
     };
   }
 
@@ -34,6 +37,7 @@ class UserModel {
     email: map['email']?.toString() ?? '',
     password: map['password']?.toString() ?? '',
     domisili: map['domisili']?.toString() ?? '',
+    nomorhp: map['nomorhp']?.toString() ?? '',
   );
 }
 

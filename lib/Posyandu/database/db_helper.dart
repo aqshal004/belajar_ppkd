@@ -9,7 +9,7 @@ class DbHelper {
    final dbPath = await getDatabasesPath();
    return openDatabase(
      join(dbPath, 'posyandu.db'),
-      version: 2,
+      version: 3,
      onCreate: (db, version) {
        return db.execute(
          'CREATE TABLE $tableUser(id INTEGER PRIMARY KEY, name TEXT, email TEXT, password TEXT,)',
@@ -19,6 +19,11 @@ class DbHelper {
         if (oldVersion < 2) {
           await db.execute(
             'ALTER TABLE $tableUser ADD COLUMN domisili TEXT',
+          );
+        }
+        if (oldVersion < 3) {
+          await db.execute(
+            'ALTER TABLE $tableUser ADD COLUMN nomorhp TEXT',
           );
         }
       },

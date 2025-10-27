@@ -15,6 +15,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _domisiliController = TextEditingController();
+  final TextEditingController _nomorhpController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   bool isVisibile = false;
 
@@ -159,6 +160,27 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                 return null;
                               },
                             ),
+                            SizedBox(height: 24),
+                            TextFormField(
+                              controller: _nomorhpController,
+                              decoration: InputDecoration(
+                                labelText: 'Nomor HP',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Nomor HP tidak boleh kosong";
+                              } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                                return "Nomor HP hanya boleh berisi angka";
+                              } else if (value.length < 10 || value.length > 13) {
+                                return "Nomor HP harus 10–13 digit";
+                              }
+                              return null;
+                            },
+
+                            ),
                             const SizedBox(height: 24),
                             ElevatedButton(
                               onPressed: () async {
@@ -169,6 +191,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                     email: _emailController.text,
                                     password: _passwordController.text,
                                     domisili: _domisiliController.text,
+                                    nomorhp: _nomorhpController.text,
                                   );
                                   await DbHelper.registerUser(data);
                                   final all = await DbHelper.getALLUser();
