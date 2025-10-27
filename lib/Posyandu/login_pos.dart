@@ -291,9 +291,8 @@ class _LoginPosyanduWidgetState extends State<LoginPosyanduWidget> {
                                         ),
                                       );
                                       return;
-                                    }
-                                    await
-                                    PreferenceHandler.saveLogin(true);
+                                    } 
+                                    await PreferenceHandler.saveLogin(true);
                                     await PreferenceHandler.saveUserData(
                                       user.name,
                                       user.email,

@@ -208,7 +208,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF4169E1),
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 50,
+                                horizontal: 35,
                                 vertical: 12,
                               ),
                               shape: RoundedRectangleBorder(
@@ -216,7 +216,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                               ),
                             ),
                             child: Text(
-                              'Back to Login',
+                              'Back',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,

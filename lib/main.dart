@@ -22,15 +22,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // penting untuk SharedPreferences
   await initializeDateFormatting('id_ID', null);
 
-  final isLogin = await PreferenceHandler.getLogin() ?? false;
+  // final isLogin = await PreferenceHandler.getLogin() ?? false;
 
-  runApp(MyApp(isLogin: isLogin)); // tanpa const
+  runApp(MyApp()); // tanpa const
 }
 
 
 class MyApp extends StatelessWidget {
-  final bool isLogin;
-  const MyApp({super.key, required this.isLogin});
+  // final bool isLogin;
+  const MyApp({super.key,});
 
   // This widget is the root of your application.
   @override
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const LoginPosyanduWidget(),
+      home:  const LoginPosyanduWidget(),
     );
   }
 }
