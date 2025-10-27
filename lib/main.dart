@@ -56,9 +56,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: isLogin 
-  ? const FormPosyanduWidget(name: '', email: '', password: '', domisili: '',) // kalau sudah login
-  : const LoginPosyanduWidget(),
+      home: const LoginPosyanduWidget(),
     );
   }
 }
