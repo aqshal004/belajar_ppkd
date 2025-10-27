@@ -1,5 +1,6 @@
 import 'package:belajar_ppkd/Posyandu/database/db_helper.dart';
 import 'package:belajar_ppkd/Posyandu/view/form_pos.dart';
+import 'package:belajar_ppkd/Posyandu/view/list_pos.dart';
 import 'package:belajar_ppkd/Posyandu/view/register_screen.dart';
 import 'package:belajar_ppkd/Tugas6/custom_widget.dart';
 import 'package:belajar_ppkd/Tugas7/form_input.dart';
@@ -299,12 +300,13 @@ class _LoginPosyanduWidgetState extends State<LoginPosyanduWidget> {
                                     );
                                     Navigator.push(
                                       context, 
-                                      MaterialPageRoute(builder: (context) => FormPosyanduWidget(
-                                        name: user.name,
-                                        email: user.email,
-                                        password: user.password,
-                                        domisili: user.domisili,
-                                      )),
+                                      MaterialPageRoute(builder: (context) => ListPosyandu(
+                                        // name: user.name,
+                                        // email: user.email,
+                                        // password: user.password,
+                                        // domisili: user.domisili,
+                                      ),
+                                      ),
                                       );
                                   }
                                   },

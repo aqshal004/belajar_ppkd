@@ -28,14 +28,15 @@ class UserModel {
   
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-      id: map['id'] != null ? map['id'] as int : null,
-      name: map['name']  as String,
-      email: map['email'] as String,
-      password: map['password'] != null ? map['password'] as String : null,
-      domisili: map['domisili'] as String,
-    );
-  }
+  return UserModel(
+    id: map['id'] is int ? map['id'] : int.tryParse(map['id']?.toString() ?? '0'),
+    name: map['name']?.toString() ?? '',
+    email: map['email']?.toString() ?? '',
+    password: map['password']?.toString() ?? '',
+    domisili: map['domisili']?.toString() ?? '',
+  );
+}
+
 
   String toJson() => json.encode(toMap());
 

@@ -170,7 +170,9 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                                     password: _passwordController.text,
                                     domisili: _domisiliController.text,
                                   );
-                                  DbHelper.registerUser(data);
+                                  await DbHelper.registerUser(data);
+                                  final all = await DbHelper.getALLUser();
+                                  print("Total user di database: ${all.length}");
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       content: Text('Register Success'),
