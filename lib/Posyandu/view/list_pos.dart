@@ -3,6 +3,7 @@ import 'package:belajar_ppkd/Posyandu/login_pos.dart';
 import 'package:belajar_ppkd/Posyandu/model/user_model.dart';
 import 'package:belajar_ppkd/preferences/preferences_handler.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ListPosyandu extends StatefulWidget {
   const ListPosyandu({super.key});
@@ -12,11 +13,82 @@ class ListPosyandu extends StatefulWidget {
 }
 
 class _ListPosyanduState extends State<ListPosyandu> {
+  final nameC = TextEditingController();
+  final emailC = TextEditingController();
+  final domisiliC = TextEditingController();
+  final nomorhpC = TextEditingController();
   getData() {
     DbHelper.getALLUser();
     setState(() {});
   }
+ 
+  Future<void> _onEdit(UserModel user) async {
+  final editNameC = TextEditingController(text: user.name);
+  final editEmailC = TextEditingController(text: user.email);
+  final editDomisiliC = TextEditingController(text: user.domisili);
+  final editNomorhpC = TextEditingController(text: user.nomorhp);
 
+  // Dialog akan mengembalikan UserModel atau null
+  final updatedUser = await showDialog<UserModel>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text("Edit User"),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextField(
+                controller: editNameC,
+                decoration: const InputDecoration(labelText: "Name"),
+              ),
+              TextField(
+                controller: editEmailC,
+                decoration: const InputDecoration(labelText: "Email"),
+              ),
+              TextField(
+                controller: editDomisiliC,
+                decoration: const InputDecoration(labelText: "Domisili"),
+              ),
+              TextField(
+                controller: editNomorhpC,
+                decoration: const InputDecoration(labelText: "Nomor HP"),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, null),
+            child: const Text("Batal"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              final updated = UserModel(
+                id: user.id,
+                name: editNameC.text,
+                email: editEmailC.text,
+                password: user.password,
+                domisili: editDomisiliC.text,
+                nomorhp: editNomorhpC.text,
+              );
+              Navigator.pop(context, updated); // kirim hasil
+            },
+            child: const Text("Simpan"),
+          ),
+        ],
+      );
+    },
+  );
+
+  // Kalau user menekan "Simpan", updatedUser tidak null
+  if (updatedUser != null) {
+    await DbHelper.updateUser(updatedUser);
+    getData();
+    Fluttertoast.showToast(msg: 'User berhasil diupdate');
+  }
+}
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,18 +202,59 @@ class _ListPosyanduState extends State<ListPosyandu> {
                             padding: const EdgeInsets.only(top: 4),
                             child: Row(
                               children: [
-                                Icon(Icons.location_on, size: 14, color: Colors.grey[600]),
+                                Icon(Icons.mail, size: 14, color: Colors.grey[600]),
                                 const SizedBox(width: 4),
-                                Text(
-                                  items.domisili,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey[600],
+                                Expanded(
+                                  child: Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    // maxLines: 1,
+                                    items.email,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey[600],
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                         trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.edit, color: Colors.blue),
+                              onPressed: () => _onEdit(items),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.delete, color: Colors.red),
+                              onPressed: () async {
+                                final confirm = await showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: const Text("Hapus User"),
+                                    content: Text("Yakin ingin menghapus ${items.name}?"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context, false),
+                                        child: const Text("Batal"),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () => Navigator.pop(context, true),
+                                        style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                                        child: const Text("Hapus"),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                                if (confirm == true) {
+                                  await DbHelper.deleteUser(items.id!);
+                                  getData();
+                                  Fluttertoast.showToast(msg: 'User berhasil dihapus');
+                                }
+                              },
+                            ),
+                          ],
+                        ),
                         ),
                       );
                     },
