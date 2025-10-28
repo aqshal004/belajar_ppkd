@@ -181,7 +181,7 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                             },
 
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 22),
                             ElevatedButton(
                               onPressed: () async {
                                 if (_formkey.currentState!.validate()) {

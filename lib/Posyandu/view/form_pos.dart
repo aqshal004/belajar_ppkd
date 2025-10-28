@@ -77,7 +77,7 @@ class _FormPosyanduWidgetState extends State<FormPosyanduWidget> {
                       color: Colors.amber[700],
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 16),
                   const Text(
                     "Selamat Datang",
                     style: TextStyle(

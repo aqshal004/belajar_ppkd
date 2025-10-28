@@ -121,7 +121,7 @@ class _ListPosyanduState extends State<ListPosyandu> {
                           title: Text(
                             items.name,
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                               fontWeight: FontWeight.w600,
                               color: Colors.black87,
                             ),
