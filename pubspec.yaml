@@ -34,6 +34,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^9.0.0
+  http: ^1.6.0
   intl: ^0.20.2
   mobkit_dashed_border: ^0.0.8
   shared_preferences: ^2.5.3
