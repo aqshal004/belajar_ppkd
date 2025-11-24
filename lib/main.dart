@@ -9,8 +9,12 @@ import 'package:belajar_ppkd/day18/splash_screen.dart';
 import 'package:belajar_ppkd/day32/view/dashboard_screen.dart';
 import 'package:belajar_ppkd/day32/view/splash_screen.dart';
 import 'package:belajar_ppkd/day33/view/splash_screen.dart';
+import 'package:belajar_ppkd/day39/views/login_screen.dart';
+import 'package:belajar_ppkd/day39/views/register_screen.dart';
+import 'package:belajar_ppkd/firebase_options.dart';
 import 'package:belajar_ppkd/home_screen.dart';
 import 'package:belajar_ppkd/preferences/preferences_handler.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_ppkd/Tugas1/user_profile.dart';
 import 'package:belajar_ppkd/Tugas2/layout.dart';
@@ -24,6 +28,7 @@ import 'package:intl/date_symbol_data_local.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // penting untuk SharedPreferences
   await initializeDateFormatting('id_ID', null);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // final isLogin = await PreferenceHandler.getLogin() ?? false;
 
@@ -59,7 +64,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  const SplashScreenUserWidget(),
+      home:  const LoginPosyanduWidgetDay39(),
     );
   }
 }

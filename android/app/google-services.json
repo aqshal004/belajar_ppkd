@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558246861352",
+    "project_id": "aqshal-ppkd-a2ce4",
+    "storage_bucket": "aqshal-ppkd-a2ce4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558246861352:android:923ab6e75ae0296eef331d",
+        "android_client_info": {
+          "package_name": "com.example.belajar_ppkd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOM18sXoE2I-U3dV8aEUlsz74U4LcEkrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
